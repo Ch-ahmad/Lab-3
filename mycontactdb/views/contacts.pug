@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  div.contactscontainer(style='max-width: 800px; margin: 0 auto;')
+    h1.contacts-header(style='font-size: 24px; margin-bottom: 20px;') Contacts
+    table.contacts-table(style='width: 100%; border-collapse: collapse;')
+      thead
+        tr
+          th(style='padding: 10px; border: 1px solid #ddd;') First Name
+          th(style='padding: 10px; border: 1px solid #ddd;') Last Name
+          th(style='padding: 10px; border: 1px solid #ddd;') Email Address
+          th(style='padding: 10px; border: 1px solid #ddd;') Actions
+      tbody
+        each contact in contacts
+          tr
+            td(style='padding: 10px; border: 1px solid #ddd;')= contact.firstName
+            td(style='padding: 10px; border: 1px solid #ddd;')= contact.lastName
+            td(style='padding: 10px; border: 1px solid #ddd;')= contact.email
+            td(style='padding: 10px; border: 1px solid #ddd;')
+              a(href=`/contacts/${contact.id}`, style='padding: 8px 16px; border: none; cursor: pointer; text-decoration: none; color: #fff; border-radius: 4px; background-color: #007bff;') View
+              a(href=`/contacts/${contact.id}/edit`, style='padding: 8px 16px; border: none; cursor: pointer; text-decoration: none; color: #fff; border-radius: 4px; background-color: #ffc107;') Edit
+              form(method='POST', action=`/contacts/${contact.id}?_method=DELETE`, style='display: inline;') 
+                button(type='submit', style='padding: 8px 16px; border: none; cursor: pointer; text-decoration: none; color: #fff; border-radius: 4px; background-color: #dc3545;') Delete
+  br
+  a(href='/contacts/new', style='padding: 8px 16px; border: none; cursor: pointer; text-decoration: none; color: #fff; border-radius: 4px; background-color: #28a745;') Add Contact

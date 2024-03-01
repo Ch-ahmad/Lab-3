@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/css/style.css')
+  h1(style='text-align: center; margin-bottom: 20px;') Edit Contact
+  form(style='max-width: 400px; margin: 0 auto;', method='POST', action=`/contacts/${contact.id}?_method=PUT`)
+    label(for='firstName', style='display: block; margin-bottom: 5px;') First Name:
+    input(type='text', name='firstName', value=contact.firstName, required, style='width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;')
+    label(for='lastName', style='display: block; margin-bottom: 5px;') Last Name:
+    input(type='text', name='lastName', value=contact.lastName, required, style='width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;')
+    label(for='email', style='display: block; margin-bottom: 5px;') Email Address:
+    input(type='text', name='email', value=contact.email, style='width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;')
+    label(for='notes', style='display: block; margin-bottom: 5px;') Notes:
+    textarea(name='notes', style='width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;')= contact.notes
+    button(type='submit', style='width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;') Save
+    a(href='/contacts', class='btn btn-cancel', style='display: block; width: 100%; padding: 10px; margin-top: 10px; text-align: center; text-decoration: none; color: #fff; background-color: #dc3545; border: none; border-radius: 4px;') Cancel
